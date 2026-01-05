@@ -1,0 +1,16 @@
+httpVersion: 2
+fqdn: core-simulator
+sbiPort: 8080
+oamPort: 8081
+initOnStartup: true
+simulationProfile:
+  plmn:
+    mcc: '001'
+    mnc: '01'
+  dnn: intenet
+  slice:
+    sst: 1
+    sd: FFFFFF
+  numOfUe: 8
+  numOfgNB: 4
+  arrivalRate: 2

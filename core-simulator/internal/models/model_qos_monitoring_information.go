@@ -1,0 +1,361 @@
+// Copyright 2025 EURECOM
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// Contributors:
+//   Giulio CAROTA
+//   Thomas DU
+//   Adlen KSENTINI
+
+/*
+Npcf_PolicyAuthorization Service API
+
+PCF Policy Authorization Service.   © 2024, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved.
+
+API version: 1.3.0-alpha.6
+*/
+
+package models
+
+import (
+	"encoding/json"
+)
+
+// checks if the QosMonitoringInformation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &QosMonitoringInformation{}
+
+// QosMonitoringInformation Indicates the QoS Monitoring information to report, i.e. UL and/or DL and or round trip delay.
+type QosMonitoringInformation struct {
+	RepThreshDl *int32 `json:"repThreshDl,omitempty"`
+	RepThreshUl *int32 `json:"repThreshUl,omitempty"`
+	RepThreshRp *int32 `json:"repThreshRp,omitempty"`
+	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
+	RepThreshDatRateUl *string `json:"repThreshDatRateUl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	// String representing a bit rate; the prefixes follow the standard symbols from The International System of Units, and represent x1000 multipliers, with the exception that prefix \"K\" is used to represent the standard symbol \"k\".
+	RepThreshDatRateDl *string `json:"repThreshDatRateDl,omitempty" validate:"regexp=^\\\\d+(\\\\.\\\\d+)? (bps|Kbps|Mbps|Gbps|Tbps)$"`
+	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
+	ConThreshDl *int32 `json:"conThreshDl,omitempty"`
+	// Unsigned Integer, i.e. only value 0 and integers above 0 are permissible.
+	ConThreshUl *int32 `json:"conThreshUl,omitempty"`
+}
+
+// NewQosMonitoringInformation instantiates a new QosMonitoringInformation object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewQosMonitoringInformation() *QosMonitoringInformation {
+	this := QosMonitoringInformation{}
+	return &this
+}
+
+// NewQosMonitoringInformationWithDefaults instantiates a new QosMonitoringInformation object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewQosMonitoringInformationWithDefaults() *QosMonitoringInformation {
+	this := QosMonitoringInformation{}
+	return &this
+}
+
+// GetRepThreshDl returns the RepThreshDl field value if set, zero value otherwise.
+func (o *QosMonitoringInformation) GetRepThreshDl() int32 {
+	if o == nil || IsNil(o.RepThreshDl) {
+		var ret int32
+		return ret
+	}
+	return *o.RepThreshDl
+}
+
+// GetRepThreshDlOk returns a tuple with the RepThreshDl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QosMonitoringInformation) GetRepThreshDlOk() (*int32, bool) {
+	if o == nil || IsNil(o.RepThreshDl) {
+		return nil, false
+	}
+	return o.RepThreshDl, true
+}
+
+// HasRepThreshDl returns a boolean if a field has been set.
+func (o *QosMonitoringInformation) HasRepThreshDl() bool {
+	if o != nil && !IsNil(o.RepThreshDl) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepThreshDl gets a reference to the given int32 and assigns it to the RepThreshDl field.
+func (o *QosMonitoringInformation) SetRepThreshDl(v int32) {
+	o.RepThreshDl = &v
+}
+
+// GetRepThreshUl returns the RepThreshUl field value if set, zero value otherwise.
+func (o *QosMonitoringInformation) GetRepThreshUl() int32 {
+	if o == nil || IsNil(o.RepThreshUl) {
+		var ret int32
+		return ret
+	}
+	return *o.RepThreshUl
+}
+
+// GetRepThreshUlOk returns a tuple with the RepThreshUl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QosMonitoringInformation) GetRepThreshUlOk() (*int32, bool) {
+	if o == nil || IsNil(o.RepThreshUl) {
+		return nil, false
+	}
+	return o.RepThreshUl, true
+}
+
+// HasRepThreshUl returns a boolean if a field has been set.
+func (o *QosMonitoringInformation) HasRepThreshUl() bool {
+	if o != nil && !IsNil(o.RepThreshUl) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepThreshUl gets a reference to the given int32 and assigns it to the RepThreshUl field.
+func (o *QosMonitoringInformation) SetRepThreshUl(v int32) {
+	o.RepThreshUl = &v
+}
+
+// GetRepThreshRp returns the RepThreshRp field value if set, zero value otherwise.
+func (o *QosMonitoringInformation) GetRepThreshRp() int32 {
+	if o == nil || IsNil(o.RepThreshRp) {
+		var ret int32
+		return ret
+	}
+	return *o.RepThreshRp
+}
+
+// GetRepThreshRpOk returns a tuple with the RepThreshRp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QosMonitoringInformation) GetRepThreshRpOk() (*int32, bool) {
+	if o == nil || IsNil(o.RepThreshRp) {
+		return nil, false
+	}
+	return o.RepThreshRp, true
+}
+
+// HasRepThreshRp returns a boolean if a field has been set.
+func (o *QosMonitoringInformation) HasRepThreshRp() bool {
+	if o != nil && !IsNil(o.RepThreshRp) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepThreshRp gets a reference to the given int32 and assigns it to the RepThreshRp field.
+func (o *QosMonitoringInformation) SetRepThreshRp(v int32) {
+	o.RepThreshRp = &v
+}
+
+// GetRepThreshDatRateUl returns the RepThreshDatRateUl field value if set, zero value otherwise.
+func (o *QosMonitoringInformation) GetRepThreshDatRateUl() string {
+	if o == nil || IsNil(o.RepThreshDatRateUl) {
+		var ret string
+		return ret
+	}
+	return *o.RepThreshDatRateUl
+}
+
+// GetRepThreshDatRateUlOk returns a tuple with the RepThreshDatRateUl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QosMonitoringInformation) GetRepThreshDatRateUlOk() (*string, bool) {
+	if o == nil || IsNil(o.RepThreshDatRateUl) {
+		return nil, false
+	}
+	return o.RepThreshDatRateUl, true
+}
+
+// HasRepThreshDatRateUl returns a boolean if a field has been set.
+func (o *QosMonitoringInformation) HasRepThreshDatRateUl() bool {
+	if o != nil && !IsNil(o.RepThreshDatRateUl) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepThreshDatRateUl gets a reference to the given string and assigns it to the RepThreshDatRateUl field.
+func (o *QosMonitoringInformation) SetRepThreshDatRateUl(v string) {
+	o.RepThreshDatRateUl = &v
+}
+
+// GetRepThreshDatRateDl returns the RepThreshDatRateDl field value if set, zero value otherwise.
+func (o *QosMonitoringInformation) GetRepThreshDatRateDl() string {
+	if o == nil || IsNil(o.RepThreshDatRateDl) {
+		var ret string
+		return ret
+	}
+	return *o.RepThreshDatRateDl
+}
+
+// GetRepThreshDatRateDlOk returns a tuple with the RepThreshDatRateDl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QosMonitoringInformation) GetRepThreshDatRateDlOk() (*string, bool) {
+	if o == nil || IsNil(o.RepThreshDatRateDl) {
+		return nil, false
+	}
+	return o.RepThreshDatRateDl, true
+}
+
+// HasRepThreshDatRateDl returns a boolean if a field has been set.
+func (o *QosMonitoringInformation) HasRepThreshDatRateDl() bool {
+	if o != nil && !IsNil(o.RepThreshDatRateDl) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepThreshDatRateDl gets a reference to the given string and assigns it to the RepThreshDatRateDl field.
+func (o *QosMonitoringInformation) SetRepThreshDatRateDl(v string) {
+	o.RepThreshDatRateDl = &v
+}
+
+// GetConThreshDl returns the ConThreshDl field value if set, zero value otherwise.
+func (o *QosMonitoringInformation) GetConThreshDl() int32 {
+	if o == nil || IsNil(o.ConThreshDl) {
+		var ret int32
+		return ret
+	}
+	return *o.ConThreshDl
+}
+
+// GetConThreshDlOk returns a tuple with the ConThreshDl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QosMonitoringInformation) GetConThreshDlOk() (*int32, bool) {
+	if o == nil || IsNil(o.ConThreshDl) {
+		return nil, false
+	}
+	return o.ConThreshDl, true
+}
+
+// HasConThreshDl returns a boolean if a field has been set.
+func (o *QosMonitoringInformation) HasConThreshDl() bool {
+	if o != nil && !IsNil(o.ConThreshDl) {
+		return true
+	}
+
+	return false
+}
+
+// SetConThreshDl gets a reference to the given int32 and assigns it to the ConThreshDl field.
+func (o *QosMonitoringInformation) SetConThreshDl(v int32) {
+	o.ConThreshDl = &v
+}
+
+// GetConThreshUl returns the ConThreshUl field value if set, zero value otherwise.
+func (o *QosMonitoringInformation) GetConThreshUl() int32 {
+	if o == nil || IsNil(o.ConThreshUl) {
+		var ret int32
+		return ret
+	}
+	return *o.ConThreshUl
+}
+
+// GetConThreshUlOk returns a tuple with the ConThreshUl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QosMonitoringInformation) GetConThreshUlOk() (*int32, bool) {
+	if o == nil || IsNil(o.ConThreshUl) {
+		return nil, false
+	}
+	return o.ConThreshUl, true
+}
+
+// HasConThreshUl returns a boolean if a field has been set.
+func (o *QosMonitoringInformation) HasConThreshUl() bool {
+	if o != nil && !IsNil(o.ConThreshUl) {
+		return true
+	}
+
+	return false
+}
+
+// SetConThreshUl gets a reference to the given int32 and assigns it to the ConThreshUl field.
+func (o *QosMonitoringInformation) SetConThreshUl(v int32) {
+	o.ConThreshUl = &v
+}
+
+func (o QosMonitoringInformation) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o QosMonitoringInformation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RepThreshDl) {
+		toSerialize["repThreshDl"] = o.RepThreshDl
+	}
+	if !IsNil(o.RepThreshUl) {
+		toSerialize["repThreshUl"] = o.RepThreshUl
+	}
+	if !IsNil(o.RepThreshRp) {
+		toSerialize["repThreshRp"] = o.RepThreshRp
+	}
+	if !IsNil(o.RepThreshDatRateUl) {
+		toSerialize["repThreshDatRateUl"] = o.RepThreshDatRateUl
+	}
+	if !IsNil(o.RepThreshDatRateDl) {
+		toSerialize["repThreshDatRateDl"] = o.RepThreshDatRateDl
+	}
+	if !IsNil(o.ConThreshDl) {
+		toSerialize["conThreshDl"] = o.ConThreshDl
+	}
+	if !IsNil(o.ConThreshUl) {
+		toSerialize["conThreshUl"] = o.ConThreshUl
+	}
+	return toSerialize, nil
+}
+
+type NullableQosMonitoringInformation struct {
+	value *QosMonitoringInformation
+	isSet bool
+}
+
+func (v NullableQosMonitoringInformation) Get() *QosMonitoringInformation {
+	return v.value
+}
+
+func (v *NullableQosMonitoringInformation) Set(val *QosMonitoringInformation) {
+	v.value = val
+	v.isSet = true
+}
+
+func (v NullableQosMonitoringInformation) IsSet() bool {
+	return v.isSet
+}
+
+func (v *NullableQosMonitoringInformation) Unset() {
+	v.value = nil
+	v.isSet = false
+}
+
+func NewNullableQosMonitoringInformation(val *QosMonitoringInformation) *NullableQosMonitoringInformation {
+	return &NullableQosMonitoringInformation{value: val, isSet: true}
+}
+
+func (v NullableQosMonitoringInformation) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
+}
+
+func (v *NullableQosMonitoringInformation) UnmarshalJSON(src []byte) error {
+	v.isSet = true
+	return json.Unmarshal(src, &v.value)
+}

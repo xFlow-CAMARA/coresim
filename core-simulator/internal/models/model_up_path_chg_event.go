@@ -1,0 +1,267 @@
+// Copyright 2025 EURECOM
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// Contributors:
+//   Giulio CAROTA
+//   Thomas DU
+//   Adlen KSENTINI
+
+/*
+Npcf_PolicyAuthorization Service API
+
+PCF Policy Authorization Service.   © 2024, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved.
+
+API version: 1.3.0-alpha.6
+*/
+
+package models
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+)
+
+// checks if the UpPathChgEvent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpPathChgEvent{}
+
+// UpPathChgEvent Contains the UP path change event subscription from the AF.
+type UpPathChgEvent struct {
+	// String providing an URI formatted according to RFC 3986.
+	NotificationUri string `json:"notificationUri"`
+	// It is used to set the value of Notification Correlation ID in the notification sent by the SMF.
+	NotifCorreId string         `json:"notifCorreId"`
+	DnaiChgType  DnaiChangeType `json:"dnaiChgType"`
+	AfAckInd     *bool          `json:"afAckInd,omitempty"`
+}
+
+type _UpPathChgEvent UpPathChgEvent
+
+// NewUpPathChgEvent instantiates a new UpPathChgEvent object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewUpPathChgEvent(notificationUri string, notifCorreId string, dnaiChgType DnaiChangeType) *UpPathChgEvent {
+	this := UpPathChgEvent{}
+	this.NotificationUri = notificationUri
+	this.NotifCorreId = notifCorreId
+	this.DnaiChgType = dnaiChgType
+	return &this
+}
+
+// NewUpPathChgEventWithDefaults instantiates a new UpPathChgEvent object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewUpPathChgEventWithDefaults() *UpPathChgEvent {
+	this := UpPathChgEvent{}
+	return &this
+}
+
+// GetNotificationUri returns the NotificationUri field value
+func (o *UpPathChgEvent) GetNotificationUri() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.NotificationUri
+}
+
+// GetNotificationUriOk returns a tuple with the NotificationUri field value
+// and a boolean to check if the value has been set.
+func (o *UpPathChgEvent) GetNotificationUriOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NotificationUri, true
+}
+
+// SetNotificationUri sets field value
+func (o *UpPathChgEvent) SetNotificationUri(v string) {
+	o.NotificationUri = v
+}
+
+// GetNotifCorreId returns the NotifCorreId field value
+func (o *UpPathChgEvent) GetNotifCorreId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.NotifCorreId
+}
+
+// GetNotifCorreIdOk returns a tuple with the NotifCorreId field value
+// and a boolean to check if the value has been set.
+func (o *UpPathChgEvent) GetNotifCorreIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NotifCorreId, true
+}
+
+// SetNotifCorreId sets field value
+func (o *UpPathChgEvent) SetNotifCorreId(v string) {
+	o.NotifCorreId = v
+}
+
+// GetDnaiChgType returns the DnaiChgType field value
+func (o *UpPathChgEvent) GetDnaiChgType() DnaiChangeType {
+	if o == nil {
+		var ret DnaiChangeType
+		return ret
+	}
+
+	return o.DnaiChgType
+}
+
+// GetDnaiChgTypeOk returns a tuple with the DnaiChgType field value
+// and a boolean to check if the value has been set.
+func (o *UpPathChgEvent) GetDnaiChgTypeOk() (*DnaiChangeType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DnaiChgType, true
+}
+
+// SetDnaiChgType sets field value
+func (o *UpPathChgEvent) SetDnaiChgType(v DnaiChangeType) {
+	o.DnaiChgType = v
+}
+
+// GetAfAckInd returns the AfAckInd field value if set, zero value otherwise.
+func (o *UpPathChgEvent) GetAfAckInd() bool {
+	if o == nil || IsNil(o.AfAckInd) {
+		var ret bool
+		return ret
+	}
+	return *o.AfAckInd
+}
+
+// GetAfAckIndOk returns a tuple with the AfAckInd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpPathChgEvent) GetAfAckIndOk() (*bool, bool) {
+	if o == nil || IsNil(o.AfAckInd) {
+		return nil, false
+	}
+	return o.AfAckInd, true
+}
+
+// HasAfAckInd returns a boolean if a field has been set.
+func (o *UpPathChgEvent) HasAfAckInd() bool {
+	if o != nil && !IsNil(o.AfAckInd) {
+		return true
+	}
+
+	return false
+}
+
+// SetAfAckInd gets a reference to the given bool and assigns it to the AfAckInd field.
+func (o *UpPathChgEvent) SetAfAckInd(v bool) {
+	o.AfAckInd = &v
+}
+
+func (o UpPathChgEvent) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UpPathChgEvent) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["notificationUri"] = o.NotificationUri
+	toSerialize["notifCorreId"] = o.NotifCorreId
+	toSerialize["dnaiChgType"] = o.DnaiChgType
+	if !IsNil(o.AfAckInd) {
+		toSerialize["afAckInd"] = o.AfAckInd
+	}
+	return toSerialize, nil
+}
+
+func (o *UpPathChgEvent) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"notificationUri",
+		"notifCorreId",
+		"dnaiChgType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUpPathChgEvent := _UpPathChgEvent{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUpPathChgEvent)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpPathChgEvent(varUpPathChgEvent)
+
+	return err
+}
+
+type NullableUpPathChgEvent struct {
+	value *UpPathChgEvent
+	isSet bool
+}
+
+func (v NullableUpPathChgEvent) Get() *UpPathChgEvent {
+	return v.value
+}
+
+func (v *NullableUpPathChgEvent) Set(val *UpPathChgEvent) {
+	v.value = val
+	v.isSet = true
+}
+
+func (v NullableUpPathChgEvent) IsSet() bool {
+	return v.isSet
+}
+
+func (v *NullableUpPathChgEvent) Unset() {
+	v.value = nil
+	v.isSet = false
+}
+
+func NewNullableUpPathChgEvent(val *UpPathChgEvent) *NullableUpPathChgEvent {
+	return &NullableUpPathChgEvent{value: val, isSet: true}
+}
+
+func (v NullableUpPathChgEvent) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
+}
+
+func (v *NullableUpPathChgEvent) UnmarshalJSON(src []byte) error {
+	v.isSet = true
+	return json.Unmarshal(src, &v.value)
+}

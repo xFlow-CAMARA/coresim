@@ -1,0 +1,36 @@
+profiles:
+  default:
+    plmn:
+      mcc: "001"
+      mnc: "06"
+    dnn: "intenet"
+    slice:
+      sst: 1
+      sd: "010203"
+    numUe: 1
+    gNBs: 40
+    rate: 1
+
+  fullLoad:
+    plmn:
+      mcc: "001"
+      mnc: "06"
+    dnn: "intenet"
+    slice:
+      sst: 1
+      sd: "010203"
+    numUe: 500
+    gNBs: 40
+    rate: 10
+
+  fullRate:
+    plmn:
+      mcc: "001"
+      mnc: "01"
+    dnn: "oai"
+    slice:
+      sst: 1
+      sd: "FFFFFF"
+    numUe: 5
+    gNBs: 2
+    rate: 500

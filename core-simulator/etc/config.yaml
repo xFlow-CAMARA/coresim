@@ -1,0 +1,20 @@
+useTLS: false
+httpVersion: 2
+fqdn: core-simulator
+sbiPort: 8080
+oamPort: 8081
+initOnStartup: true #will require a default config 
+simulationProfile:
+  plmn:
+      mcc: "001"
+      mnc: "06"
+  dnn: "intenet"
+  slice:
+    sst: 1
+    sd: "FFFFFF"
+  numOfUe: 2
+  numOfgNB: 1
+  arrivalRate: 1
+
+# you can define here a simultation profile that will be automatically configured
+# useful when not running in standalone mode / for CICD
