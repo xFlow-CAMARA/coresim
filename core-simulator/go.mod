@@ -7,6 +7,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/prometheus/client_golang v1.23.2
+	go.mongodb.org/mongo-driver v1.17.1
 	golang.org/x/net v0.43.0
 	gopkg.in/yaml.v3 v3.0.1
 )
