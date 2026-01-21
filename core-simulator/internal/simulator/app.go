@@ -159,6 +159,15 @@ func (app *CoreSimulatorApp) Run() {
 		if err != nil {
 			log.Fatalf("could not initialize the simulator on startup")
 		}
+
+		// Auto-start the simulation after initialization
+		log.Printf("auto-starting simulation")
+		err = app.StartSimulation()
+		if err != nil {
+			log.Printf("warning: could not auto-start simulation: %v", err)
+		} else {
+			log.Printf("simulation started successfully")
+		}
 	}
 
 	app.startHttpServer()

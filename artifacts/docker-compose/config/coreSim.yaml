@@ -11,6 +11,6 @@ simulationProfile:
   slice:
     sst: 1
     sd: FFFFFF
-  numOfUe: 8
+  numOfUe: 10
   numOfgNB: 4
   arrivalRate: 2
