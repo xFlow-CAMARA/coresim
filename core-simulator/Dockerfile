@@ -3,6 +3,9 @@ FROM golang:1.23 AS gobuilder
 
 WORKDIR /app
 
+ARG GIT_BRANCH=unknown
+ARG GIT_COMMIT=unknown
+
 # Copy all sources
 COPY . .
 
@@ -11,7 +14,7 @@ RUN go mod download
 
 # Build core-simulator
 RUN CGO_ENABLED=0 GOOS=linux go build \
-    -ldflags "-X main.gitBranch=$(git rev-parse --abbrev-ref HEAD) -X main.gitCommit=$(git rev-parse HEAD)" \
+    -ldflags "-X main.gitBranch=${GIT_BRANCH} -X main.gitCommit=${GIT_COMMIT}" \
     -o /core-simulator cmd/core-simulator/main.go
 
 

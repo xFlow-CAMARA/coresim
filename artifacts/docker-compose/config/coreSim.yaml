@@ -12,5 +12,5 @@ simulationProfile:
     sst: 1
     sd: FFFFFF
   numOfUe: 10
-  numOfgNB: 4
+  numOfgNB: 5
   arrivalRate: 2
