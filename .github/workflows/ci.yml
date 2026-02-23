@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   go-test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, camara-vm]
     timeout-minutes: 20
     steps:
       - name: Checkout
@@ -41,7 +41,7 @@ jobs:
         run: go test ./...
 
   docker-build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, camara-vm]
     timeout-minutes: 30
     steps:
       - name: Checkout
